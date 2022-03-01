@@ -8,19 +8,8 @@ const path = require('path')
 
 const app = express()
 app.use(express.json())
-app.enable('trust proxy'); // optional, not needed for secure cookies
-app.use(express.session({
-    secret : 'somesecret',
-    store : ..., // store works fine, sessions are stored
-    key : 'sid',
-    proxy : true, // add this when behind a reverse proxy, if you need secure cookies
-    cookie : {
-        secure : true,
-        maxAge: 5184000000 // 2 months
-    }
-}));
-app.use(cookieParser())
 app.use(cors())
+app.use(cookieParser())
 app.use(fileUpload({
   useTempFiles: true
 }))
