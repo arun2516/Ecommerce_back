@@ -28,6 +28,8 @@ const userController = {
 
       res.cookie('refreshtoken', refreshtoken, {
         httpOnly: true,
+        domain: '.herokuapp.com',
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
         path: '/user/refresh_token',
         maxAge: 7*24*60*60*1000 
       })
@@ -53,6 +55,8 @@ const userController = {
 
       res.cookie('refreshtoken', refreshtoken, {
         httpOnly: true,
+        domain: '.herokuapp.com',
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
         path: '/user/refresh_token',
         maxAge: 7*24*60*60*1000 
       })
